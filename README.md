@@ -1,4 +1,4 @@
-# flashchat
+# Animo Chat
 
 # Flutter project.
 
