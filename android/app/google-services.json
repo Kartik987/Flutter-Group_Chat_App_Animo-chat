@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "301338608417",
+    "firebase_url": "https://mypro-ff50f.firebaseio.com",
+    "project_id": "mypro-ff50f",
+    "storage_bucket": "mypro-ff50f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301338608417:android:7ba18dd68d82dc7b2af460",
+        "android_client_info": {
+          "package_name": "com.kartik.flashchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301338608417-3gnnvjd251h2j8t5k612bh1nk8th2pim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5y1ojYO_l4eWwU_xeLxisrZQbixHwNJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301338608417-3gnnvjd251h2j8t5k612bh1nk8th2pim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
