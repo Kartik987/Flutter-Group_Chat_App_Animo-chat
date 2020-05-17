@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
 
+int dayofmonth;
+dynamic currentTime;
+String month;
+int year;
+int hour;
+int minute;
+ String resultday='';
+ String time;
+List<String> months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+ String meridiem;
 
 const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),

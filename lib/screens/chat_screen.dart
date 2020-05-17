@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flashchat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:intl/intl.dart';
 
 //import 'package:firebase_messaging/firebase_messaging.dart';
 final _firestore = Firestore.instance;
+
 FirebaseUser loggedInUser;
 
 class ChatScreen extends StatefulWidget {
@@ -21,9 +23,9 @@ class _ChatScreenState extends State<ChatScreen> {
    bool typing=false;
   String messageText;
   Color sendColor;
-  
+ 
   @override
-  void initState() async{
+  void initState() {
     super.initState();
     
     getCurrentUser();
@@ -90,8 +92,6 @@ class _ChatScreenState extends State<ChatScreen> {
                             }
                           });
                           
-                        
-                      
                        
                       },
                       decoration: kMessageTextFieldDecoration,
@@ -99,13 +99,40 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
+                      hour=DateTime.now().hour;
+                      if(hour>12){  
+                        meridiem='PM';      //  to convert the hour in 12 hr format.
+                        hour=hour-12;
+                      }
+                      else{
+                        meridiem='AM';
+                      }
+                      minute=DateTime.now().minute;
+                      var a=minute/10;
+                     
+                      
+                      if(a.toInt()==0){
+                        time='$hour:0$minute $meridiem';
+                      }
+                      else{
+                        time='$hour:$minute $meridiem';
+                      }
+                      dayofmonth=DateTime.now().day;
+                      month=months[DateTime.now().month];
+                      year=DateTime.now().year;
+                      
+                        resultday='$dayofmonth $month $year';
+                      
                       if(messageText.length>0){
                       messageTextController.clear();
-                      _date=DateTime.now();
+                       _date=DateTime.now();
                       _firestore.collection('messages').add({
                         'text': messageText,
                         'sender': loggedInUser.email,
                         'timestamp':_date,
+                        'day':DateTime.now().day,
+                        'formated-time':resultday,
+                        'msg-time':time,
                       });
                       }
                       setState(() {
@@ -135,6 +162,7 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessagesStream extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -154,12 +182,17 @@ class MessagesStream extends StatelessWidget {
           final messageText = message.data['text'];
          
           final messageSender = message.data['sender'];
-
+          
           final currentUser = loggedInUser.email;
-
+           final changedate=message.data['formated-time'];
+           final mtime=message.data['msg-time'];
+          
+          
           final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
+            changedate: changedate,
+            msgtime: mtime,
             isMe: currentUser == messageSender,
           );
 
@@ -178,11 +211,15 @@ class MessagesStream extends StatelessWidget {
   }
 }
 
+
+
 class MessageBubble extends StatelessWidget {
-  MessageBubble({this.sender, this.text, this.isMe});
+  MessageBubble({this.sender, this.text,this.isMe,this.changedate,this.msgtime});
 
   final String sender;
   final String text;
+  final String changedate;
+  final String msgtime;
   final bool isMe;
 
   @override
@@ -193,6 +230,16 @@ class MessageBubble extends StatelessWidget {
         crossAxisAlignment:
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
+          Text(
+            changedate,
+            style: TextStyle(
+              fontSize: 12.0,
+              color: Colors.black26,
+            ),
+          ),
+          SizedBox(
+                    height:8.0,
+                  ),
           Text(
             sender,
             style: TextStyle(
@@ -215,12 +262,27 @@ class MessageBubble extends StatelessWidget {
             color: isMe ? Colors.lightBlueAccent : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: isMe ? Colors.white : Colors.black54,
-                  fontSize: 15.0,
-                ),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: isMe ? Colors.white : Colors.black54,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height:4.0,
+                  ),
+                  Text(
+                    msgtime,
+                    style: TextStyle(
+                      color: isMe ? Colors.white : Colors.black54,
+                      fontSize: 8.0,
+                    ),
+                  ),
+                  
+                ],
               ),
             ),
           ),
