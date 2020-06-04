@@ -160,7 +160,6 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessagesStream extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
