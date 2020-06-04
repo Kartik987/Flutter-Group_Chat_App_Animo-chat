@@ -71,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
+          children: <Widget>[             
             MessagesStream(),
             Container(
               decoration: kMessageContainerDecoration,
@@ -210,8 +210,6 @@ class MessagesStream extends StatelessWidget {
     );
   }
 }
-
-
 
 class MessageBubble extends StatelessWidget {
   MessageBubble({this.sender, this.text,this.isMe,this.changedate,this.msgtime});
