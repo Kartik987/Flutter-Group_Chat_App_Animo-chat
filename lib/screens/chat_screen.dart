@@ -140,8 +140,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       });
                       
                     },
-                    
-                   
                     child: Text(
                       'Send',
                       style: TextStyle(
