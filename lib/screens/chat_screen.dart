@@ -175,9 +175,7 @@ class MessagesStream extends StatelessWidget {
         final messages = snapshot.data.documents.reversed;// this .reversed is use as without this the new message stack at the top of other mesges and we want to add new msg at the bottom of stack.
         List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
-        
           final messageText = message.data['text'];
-         
           final messageSender = message.data['sender'];
           final currentUser = loggedInUser.email;
            final changedate=message.data['formated-time'];
