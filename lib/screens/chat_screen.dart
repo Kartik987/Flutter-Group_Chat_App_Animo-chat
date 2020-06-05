@@ -188,7 +188,6 @@ class MessagesStream extends StatelessWidget {
             msgtime: mtime,
             isMe: currentUser == messageSender,
           );
-
           messageBubbles.add(messageBubble);
         }
         return Expanded(
