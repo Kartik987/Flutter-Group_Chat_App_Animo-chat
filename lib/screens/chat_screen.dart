@@ -179,11 +179,9 @@ class MessagesStream extends StatelessWidget {
           final messageText = message.data['text'];
          
           final messageSender = message.data['sender'];
-          
           final currentUser = loggedInUser.email;
            final changedate=message.data['formated-time'];
            final mtime=message.data['msg-time'];
-          
           
           final messageBubble = MessageBubble(
             sender: messageSender,
