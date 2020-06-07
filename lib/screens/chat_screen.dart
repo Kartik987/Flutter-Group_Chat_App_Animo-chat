@@ -202,7 +202,6 @@ class MessagesStream extends StatelessWidget {
     );
   }
 }
-
 class MessageBubble extends StatelessWidget {
   MessageBubble({this.sender, this.text,this.isMe,this.changedate,this.msgtime});
 
