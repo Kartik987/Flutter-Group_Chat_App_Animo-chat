@@ -83,7 +83,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       controller: messageTextController,
                       onChanged: (value) {
                         messageText = value;
-                       
                           setState(() {
                              if(messageText.length>0){
                             typing = true;}
@@ -91,8 +90,6 @@ class _ChatScreenState extends State<ChatScreen> {
                               typing=false;
                             }
                           });
-                          
-                       
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),
