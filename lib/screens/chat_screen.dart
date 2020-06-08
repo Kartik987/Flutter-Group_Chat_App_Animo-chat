@@ -109,7 +109,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       }
                       minute=DateTime.now().minute;
                       var a=minute/10;
-                    
                       if(a.toInt()==0){
                         time='$hour:0$minute $meridiem';
                       }
