@@ -56,8 +56,6 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: 
                       Icon(Icons.account_circle,
                       ),
-                     
-                
               ),
               onPressed: () {
                 _auth.signOut();               
