@@ -31,7 +31,6 @@ class _ChatScreenState extends State<ChatScreen> {
     getCurrentUser();
   
   }
-
   void getCurrentUser() async {
     try {
       final user = await _auth.currentUser();
@@ -43,7 +42,6 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
  // ScrollController scrollController= ScrollController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
